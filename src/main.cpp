@@ -45,11 +45,11 @@ auto main() -> int
 		return Color(iteration);
 	};
 
-	auto julia = [](Point z) {
+	[[maybe_unused]] auto julia = [](Point z) {
 		const  real R = 4;
 		auto iteration = 0u;
 		const auto max_iteration = 1000u;
-		const auto c = Point(-0.8, 0.156);
+		const auto c = Point(-0.6, 0.8);
 
 
 		while (z.x * z.x + z.y * z.y < R * R  &&  iteration < max_iteration) {
@@ -60,6 +60,19 @@ auto main() -> int
 		}
 
 		return histogram[iteration & 0xFF];
+	};
+
+	[[maybe_unused]] auto newton = [](Point z) {
+		auto fn = [](Point z){
+			return Point(z.x * z.x * z.x, - 1);
+
+		};
+
+		auto dx = [](Point z){
+
+		};
+
+		return Color(0.0, 0.0, 0.0);
 	};
 
 	c.construct(julia);
